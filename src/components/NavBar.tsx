@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonGroup,
   HStack,
   IconButton,
   Image,
@@ -12,6 +13,7 @@ import {
 import logo from "../assets/logo.svg";
 import ColorSwitchToggle from "./ColorSwitchToggle";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -20,11 +22,17 @@ const NavBar = () => {
         <HStack>
           <Image src={logo} boxSize="70px" margin={2} />
           <Show above="lg">
-            <Button variant="ghost" isActive={true}>
-              Games
-            </Button>
-            <Button variant="ghost">Customers</Button>
-            <Button variant="ghost">Rentals</Button>
+            <ButtonGroup variant="ghost">
+              <Button>
+                <Link to="/">Games</Link>
+              </Button>
+              <Button>
+                <Link to="/customers">Customers</Link>
+              </Button>
+              <Button>
+                <Link to="/rentals">Rentals</Link>
+              </Button>
+            </ButtonGroup>
           </Show>
           <Show below="lg">
             <Menu>
@@ -35,9 +43,15 @@ const NavBar = () => {
                 variant="outline"
               />
               <MenuList>
-                <MenuItem>Games</MenuItem>
-                <MenuItem>Customers</MenuItem>
-                <MenuItem>Rentals</MenuItem>
+                <MenuItem>
+                  <Link to="/">Games</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/customers">Customers</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/rentals">Rentals</Link>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Show>
