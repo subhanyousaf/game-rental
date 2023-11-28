@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { Game } from "../hooks/useGames";
+import { Game } from "./hooks/games/useGames";
+import { RawgGame } from "./hooks/rawg/useRawgGames";
 
 interface GameQuery {
   search?: string;
@@ -42,4 +43,25 @@ export const useGameDataStore = create<GameDataStore>((set) => ({
   setStock: (stock: number) =>
     set((state) => ({ game: { ...state.game, stock } })),
   reset: () => set({ game: {} as Game }),
+}));
+
+interface RawgGameStore {
+  game: GameQuery;
+  setSearchText: (search: string) => void;
+}
+
+export const useRawgGameStore = create<RawgGameStore>((set) => ({
+  game: {},
+  setSearchText: (search: string) =>
+    set((state) => ({ game: { ...state.game, search } })),
+}));
+
+interface GameSelectStore {
+  selectedGame: RawgGame | null;
+  setGame: (game: RawgGame | null) => void;
+}
+
+export const useGameSelectStore = create<GameSelectStore>((set) => ({
+  selectedGame: null,
+  setGame: (game: RawgGame | null) => set({ selectedGame: game }),
 }));

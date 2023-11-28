@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import APIClient from "../services/apiClient";
+import APIClient from "../../services/apiClient";
 import { Game } from "./useGames";
-import { useGamesStore } from "../store/store";
+import { useGamesStore } from "../../store";
 
 const apiClient = new APIClient<Game>("/games");
 

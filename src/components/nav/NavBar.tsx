@@ -10,7 +10,7 @@ import {
   MenuList,
   Show,
 } from "@chakra-ui/react";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 import ColorSwitchToggle from "./ColorSwitchToggle";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";

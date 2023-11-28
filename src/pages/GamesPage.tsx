@@ -1,5 +1,5 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import GamesGrid from "../components/GamesGrid";
+import GamesGrid from "../components/games/GamesGrid";
 
 const GamesPage = () => {
   return (

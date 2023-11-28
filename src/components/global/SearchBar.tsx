@@ -1,17 +1,25 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useGamesStore } from "../store/store";
+import { useGamesStore, useRawgGameStore } from "../../store";
 import { useRef } from "react";
 
-const SearchBar = () => {
+interface Props {
+  type: "games" | "rawg_games";
+}
+
+const SearchBar = ({ type }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
-  const setSearchText = useGamesStore((state) => state.setSearchText);
+
+  const types = {
+    games: useGamesStore((state) => state.setSearchText),
+    rawg_games: useRawgGameStore((state) => state.setSearchText),
+  };
+  const setSearchText = types[type];
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log("test");
         if (ref.current) {
           setSearchText(ref.current.value);
         }

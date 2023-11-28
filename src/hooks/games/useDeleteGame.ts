@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import APIClient from "../services/apiClient";
+import APIClient from "../../services/apiClient";
 import { Game } from "./useGames";
-import { useGamesStore } from "../store/store";
+import { useGamesStore } from "../../store";
 
 const useDeleteGame = (onRemove: (game: Game) => void) => {
   const gameQuery = useGamesStore((state) => state.gameQuery);

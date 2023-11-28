@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 const apiUrl =
   import.meta.env.MODE === "development"
-    ? "http://localhost:3000/api"
+    ? "http://192.168.100.4:3000/api"
     : "https://game-rental-backend-9149fe81c1f2.herokuapp.com/api";
 
 const axiosInstance = axios.create({

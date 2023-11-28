@@ -1,22 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import APIClient from "../services/apiClient";
-import { useGamesStore } from "../store/store";
+import APIClient from "../../services/apiClient";
+import { useGamesStore } from "../../store";
 
 const apiClient = new APIClient<Game>("/games");
 
 export interface Game {
   _id?: string;
   name: string;
-  genre: string;
-  platform: string;
+  genres: string[];
+  platforms: string[];
   price: number;
   releaseDate: Date;
   stock: number;
+  gameArtUrl: string;
+  criticScore: number;
 }
 
 const useGames = () => {
   const gameQuery = useGamesStore((state) => state.gameQuery);
-  console.log("i was triggered");
   return useQuery<Game[], Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>

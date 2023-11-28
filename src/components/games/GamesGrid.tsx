@@ -8,11 +8,11 @@ import {
   SimpleGrid,
   Stack,
 } from "@chakra-ui/react";
-import useGames from "../hooks/useGames";
+import useGames from "../../hooks/games/useGames";
 import GameCard from "./GameCard";
-import AddGameModal from "./AddGameModal";
-import SearchBar from "./SearchBar";
+import SearchBar from "../global/SearchBar";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameBrowserDrawer from "../browser/GameBrowserDrawer";
 
 const GamesGrid = () => {
   const { data, error, isLoading } = useGames();
@@ -22,9 +22,9 @@ const GamesGrid = () => {
     <>
       <Stack margin={5} spacing={5}>
         <Box>
-          <AddGameModal />
+          <GameBrowserDrawer />
         </Box>
-        <SearchBar />
+        <SearchBar type="games" />
         <Heading>Games</Heading>
         {error && (
           <Alert status="error">
@@ -33,7 +33,10 @@ const GamesGrid = () => {
             <AlertDescription>{error.message}</AlertDescription>
           </Alert>
         )}
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={3}>
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4, "2xl": 5 }}
+          spacing={3}
+        >
           {isLoading &&
             skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
           {data?.map((game) => (
