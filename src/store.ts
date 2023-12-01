@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { Game } from "./hooks/games/useGames";
-import { RawgGame } from "./hooks/rawg/useRawgGames";
+import Game from "./entities/Game";
+import { RawgGame } from "./entities/RawgGame";
 
 interface GameQuery {
   search?: string;
@@ -64,4 +64,23 @@ interface GameSelectStore {
 export const useGameSelectStore = create<GameSelectStore>((set) => ({
   selectedGame: null,
   setGame: (game: RawgGame | null) => set({ selectedGame: game }),
+}));
+
+interface CustomerQuery {
+  search?: string;
+}
+
+interface CustomerQueryStore {
+  customerQuery: CustomerQuery;
+  setSearchText: (search: string) => void;
+}
+
+export const useCustomersStore = create<CustomerQueryStore>((set) => ({
+  customerQuery: {},
+  setSearchText: (search: string) => {
+    console.log(search);
+    return set((state) => ({
+      customerQuery: { ...state.customerQuery, search },
+    }));
+  },
 }));

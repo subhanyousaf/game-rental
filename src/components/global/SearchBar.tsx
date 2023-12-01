@@ -1,10 +1,14 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useGamesStore, useRawgGameStore } from "../../store";
+import {
+  useCustomersStore,
+  useGamesStore,
+  useRawgGameStore,
+} from "../../store";
 import { useRef } from "react";
 
 interface Props {
-  type: "games" | "rawg_games";
+  type: "games" | "rawg_games" | "customers";
 }
 
 const SearchBar = ({ type }: Props) => {
@@ -13,11 +17,13 @@ const SearchBar = ({ type }: Props) => {
   const types = {
     games: useGamesStore((state) => state.setSearchText),
     rawg_games: useRawgGameStore((state) => state.setSearchText),
+    customers: useCustomersStore((state) => state.setSearchText),
   };
   const setSearchText = types[type];
 
   return (
     <form
+      style={{ flex: 1, display: "flex" }}
       onSubmit={(event) => {
         event.preventDefault();
         if (ref.current) {
@@ -27,12 +33,7 @@ const SearchBar = ({ type }: Props) => {
     >
       <InputGroup>
         <InputLeftElement pointerEvents="none" children={<SearchIcon />} />
-        <Input
-          ref={ref}
-          variant="filled"
-          size="md"
-          placeholder="Search games..."
-        />
+        <Input ref={ref} variant="filled" size="md" placeholder="Search..." />
       </InputGroup>
     </form>
   );

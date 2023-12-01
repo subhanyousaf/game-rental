@@ -9,7 +9,7 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { RawgGame } from "../../hooks/rawg/useRawgGames";
+import { RawgGame } from "../../entities/RawgGame";
 import getCroppedImageUrl from "../../utils/rawg-image";
 import PlatformIconList from "../stats/PlatformIconList";
 import CriticScore from "../stats/CriticScore";

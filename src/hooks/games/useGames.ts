@@ -1,20 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../../services/apiClient";
 import { useGamesStore } from "../../store";
+import Game from "../../entities/Game";
 
 const apiClient = new APIClient<Game>("/games");
-
-export interface Game {
-  _id?: string;
-  name: string;
-  genres: string[];
-  platforms: string[];
-  price: number;
-  releaseDate: Date;
-  stock: number;
-  gameArtUrl: string;
-  criticScore: number;
-}
 
 const useGames = () => {
   const gameQuery = useGamesStore((state) => state.gameQuery);

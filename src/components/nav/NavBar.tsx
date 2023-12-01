@@ -2,6 +2,7 @@ import {
   Button,
   ButtonGroup,
   HStack,
+  Hide,
   IconButton,
   Image,
   Menu,
@@ -13,7 +14,7 @@ import {
 import logo from "../../assets/logo.svg";
 import ColorSwitchToggle from "./ColorSwitchToggle";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -23,18 +24,22 @@ const NavBar = () => {
           <Image src={logo} boxSize="70px" margin={2} />
           <Show above="lg">
             <ButtonGroup variant="ghost">
-              <Button>
-                <Link to="/">Games</Link>
-              </Button>
-              <Button>
-                <Link to="/customers">Customers</Link>
-              </Button>
-              <Button>
-                <Link to="/rentals">Rentals</Link>
-              </Button>
+              <NavLink to="/">
+                {({ isActive }) => <Button isActive={isActive}>Games</Button>}
+              </NavLink>
+              <NavLink to="/customers">
+                {({ isActive }) => (
+                  <Button isActive={isActive}>Customers</Button>
+                )}
+              </NavLink>
+              <NavLink to="/purchases">
+                {({ isActive }) => (
+                  <Button isActive={isActive}>Purchases</Button>
+                )}
+              </NavLink>
             </ButtonGroup>
           </Show>
-          <Show below="lg">
+          <Hide above="lg">
             <Menu>
               <MenuButton
                 as={IconButton}
@@ -50,11 +55,11 @@ const NavBar = () => {
                   <Link to="/customers">Customers</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link to="/rentals">Rentals</Link>
+                  <Link to="/purchases">Purchases</Link>
                 </MenuItem>
               </MenuList>
             </Menu>
-          </Show>
+          </Hide>
         </HStack>
       </div>
       <div>

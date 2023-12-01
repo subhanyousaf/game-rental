@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import GamesGrid from "../components/games/GamesGrid";
 
 const GamesPage = () => {
@@ -16,9 +16,6 @@ const GamesPage = () => {
       <GridItem area={"main"}>
         <GamesGrid />
       </GridItem>
-      <Show above="lg">
-        <GridItem area={"aside"}></GridItem>
-      </Show>
     </Grid>
   );
 };

@@ -9,7 +9,7 @@ const StockCount = ({ stock }: Props) => {
   return (
     <Badge
       colorScheme={color}
-      fontSize="15px"
+      fontSize="14px"
       paddingX={2}
       borderRadius="4px"
       variant="outline"

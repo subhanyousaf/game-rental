@@ -8,7 +8,7 @@ const PriceTag = ({ price }: Props) => {
   return (
     <Badge
       colorScheme="green"
-      fontSize="15px"
+      fontSize="14px"
       paddingX={2}
       borderRadius="4px"
       variant="solid"
