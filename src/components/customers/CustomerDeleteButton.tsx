@@ -1,26 +1,32 @@
-import { IconButton } from "@chakra-ui/react";
+import { IconButton, useToast } from "@chakra-ui/react";
 import useDeleteCustomer from "../../hooks/customers/useDeleteCustomer";
 import { DeleteIcon } from "@chakra-ui/icons";
-import showToast from "../../utils/showToast";
 
 interface Props {
   customerId: string;
 }
 
 const CustomerDeleteButton = ({ customerId }: Props) => {
+  const toast = useToast();
   const deleteCustomer = useDeleteCustomer((customer, error) => {
     if (customer)
-      showToast({
+      toast({
         title: "Customer Deleted!",
         description: "We've deleted " + customer.name + ".",
         status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
       });
 
     if (error)
-      showToast({
-        title: "Error Deleting Customer!",
-        description: error.message,
+      toast({
+        title: "Error!",
+        description: error.response?.data as string,
         status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
       });
   });
 
