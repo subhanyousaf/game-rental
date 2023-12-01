@@ -26,7 +26,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Game from "../../entities/Game";
 import useAddGame from "../../hooks/games/useAddGame";
-import { RawgGame } from "../../entities/RawgGame";
+import RawgGame from "../../entities/RawgGame";
 import GameBrowserCardPreview from "./GameBrowserCardPreview";
 import moment from "moment";
 import getCroppedImageUrl from "../../utils/rawg-image";

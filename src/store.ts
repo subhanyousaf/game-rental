@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import Game from "./entities/Game";
-import { RawgGame } from "./entities/RawgGame";
+import RawgGame from "./entities/RawgGame";
 
 interface GameQuery {
   search?: string;

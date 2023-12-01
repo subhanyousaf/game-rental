@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import RawgAPIClient from "../../services/rawgApiClient";
 import { useRawgGameStore } from "../../store";
-import { RawgGame } from "../../entities/RawgGame";
+import RawgGame from "../../entities/RawgGame";
 
 const apiClient = new RawgAPIClient<RawgGame>("/games");
 

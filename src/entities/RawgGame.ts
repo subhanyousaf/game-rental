@@ -1,4 +1,4 @@
-export interface RawgGame {
+export default interface RawgGame {
   id: number;
   name: string;
   slug: string;
