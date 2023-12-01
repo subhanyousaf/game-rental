@@ -11,13 +11,13 @@ import {
   InputLeftAddon,
   InputRightElement,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FieldValues } from "react-hook-form";
 import { z } from "zod";
 import useAddCustomer from "../../hooks/customers/useAddCustomer";
 import Customer from "../../entities/Customer";
-import showToast from "../../utils/showToast";
 
 const schema = z.object({
   firstName: z.string().min(1),
@@ -28,11 +28,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-interface Props {
-  onSuccess?: () => void | undefined;
-}
-
-const CustomerForm = ({ onSuccess }: Props) => {
+const CustomerForm = () => {
   const {
     register,
     handleSubmit,
@@ -40,13 +36,17 @@ const CustomerForm = ({ onSuccess }: Props) => {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
+  let toast = useToast();
+
   const addCustomer = useAddCustomer(() => {
     reset();
-    onSuccess && onSuccess();
-    showToast({
+    toast({
       title: "Customer Added!",
-      description: "We've added a new customer.",
+      description: "We've added " + addCustomer.data?.name + ".",
       status: "success",
+      isClosable: true,
+      duration: 5000,
+      position: "top",
     });
   });
 
@@ -62,7 +62,7 @@ const CustomerForm = ({ onSuccess }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack>
-        {addCustomer.isError && (
+        {addCustomer.error && (
           <Alert status="error">
             <AlertIcon />
             <AlertDescription>
