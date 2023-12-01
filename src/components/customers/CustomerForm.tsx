@@ -42,7 +42,7 @@ const CustomerForm = () => {
     reset();
     toast({
       title: "Customer Added!",
-      description: "We've added " + addCustomer.data?.name + ".",
+      description: "We've added a new customer.",
       status: "success",
       isClosable: true,
       duration: 5000,
